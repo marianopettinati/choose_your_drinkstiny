@@ -19,17 +19,21 @@ const Drink = ({
 
                 let strIngredientsArray = [];
                 let ingredientsArray = []
-                for (let i=0; i<16; i++) {
+                for (let i=0; i<15; i++) {
                     strIngredientsArray[i] = "strIngredient"+ (i+1);
                 }
-                // strIngredientsArray.forEach(element => {
-                //     if (data.drink[0].element != null) {
-                //         ingredientsArray.push(element)
-                //     }
-                // })
+                
+                strIngredientsArray.forEach(element => {
+                    if (data.drinks[0].element !== null) {
+                        ingredientsArray.push(data.drinks[0].element)
+                    }
+                })
                
-                setIngredients(strIngredientsArray)
+                setIngredients(ingredientsArray)
+                console.log (data.drinks[0].strIngredientsArray[0])
+                console.log("STRingredientes",strIngredientsArray)
                 console.log("ingredientes",ingredientsArray)
+
             })
             .catch(err => console.log(err))
     }, [])
