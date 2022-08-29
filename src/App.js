@@ -16,10 +16,6 @@ function App() {
           <h2 className='app-hidden-h2'>FIGHT! </h2>
           <Modal isOpen= {modalIsOpen} close= {closeModal}/> 
         </div>
-
-        
-
-
       </body>
     </div>
   );

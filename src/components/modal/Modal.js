@@ -1,18 +1,26 @@
 import "./Modal.css";
 import React, { useEffect, useState } from "react";
-import Drink from "../drink/Drink";
+// import FetchDrink from "../drink/FetchDrink";
+
+
 
 const Modal = ({isOpen,close}) => {
   const handleModalContainerClick = e => e.stopPropagation();
 
   //hago el fetch acá pq si lo hago en el componente Drink.js y lo llamo
   //repito el fetch cada vez que lo llamo 
+  const [newDrink, setNewDrink] = useState (true)
   const [drink, setDrink] = useState(0)
   const [recipe, setRecipe] = useState (0)
   const [ingredients, setIngredients] = useState([])
   const [pic, setPic] = useState(0)
 
+  // const trago = FetchDrink;
+  // console.log ("ESTE ES EL TRAGO", trago)
+
   useEffect (() => {
+    if (newDrink) {
+      setNewDrink(false)
       fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php")
           .then(response => response.json())
           .then(data => {                
@@ -40,15 +48,20 @@ const Modal = ({isOpen,close}) => {
 
               setIngredients(ingredientsArray)
             
+              
           })
           .catch(err => console.log(err))
-  }, [])
+    }
+  }, [newDrink]);
+
+  const cheers = () => {
+    setNewDrink(true);
+    close();
+  };
   
 
-
-
     return (
-        <article className={`modal ${isOpen && "is-open"}`} onClick={close}>
+        <article className={`modal ${isOpen && "is-open"}`} onClick={cheers}>
           <div className="modal-container" onClick={handleModalContainerClick}>            
             <h2 className="modal-header">
               {drink}
@@ -67,7 +80,7 @@ const Modal = ({isOpen,close}) => {
               </div>
             </div>          
             <div className="modal-footer">
-              <button className="modal-close" onClick={close}> cheers! </button> 
+              <button className="modal-close"  onClick={cheers}> cheers! </button> 
             </div>
           </div>
         </article>
