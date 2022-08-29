@@ -49,16 +49,13 @@ const Modal = ({isOpen,close}) => {
 
     return (
         <article className={`modal ${isOpen && "is-open"}`} onClick={close}>
-          <div className="modal-container" onClick={handleModalContainerClick}>
-            
+          <div className="modal-container" onClick={handleModalContainerClick}>            
             <h2 className="modal-header">
               {drink}
             </h2>
-
             <div className="recipe">
                 {recipe}
               </div>
-            
             <div className="modal-content"> 
               <div className="modal-ingredients"> 
                   {ingredients.map((element) => 
@@ -68,16 +65,10 @@ const Modal = ({isOpen,close}) => {
               <div className="drink-pic">
                 <img src= {pic} alt="drink pic" width={150} height={150}/>
               </div>
-            </div>
-            
-            {/* <div className="modal-ingredients"> 
-              <Drink campo="ingredients" />
-            </div> */}
-
+            </div>          
             <div className="modal-footer">
               <button className="modal-close" onClick={close}> cheers! </button> 
             </div>
-
           </div>
         </article>
     );

@@ -39,6 +39,7 @@
 }
 .modal-header {
     border-bottom: solid 2px white;
+    padding-bottom: 1rem;
 }
 
 .modal-body, .modal-img { 
